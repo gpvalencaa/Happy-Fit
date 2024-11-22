@@ -1,0 +1,10 @@
+[
+    {
+        "nome": "Teste Luiz",
+        "email": "testeluiz@teste.com",
+        "senha": "testeLuiz",
+        "data_nascimento": "2002-10-10",
+        "altura": "160",
+        "sexo": "Feminino"
+    }
+]

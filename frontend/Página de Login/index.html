@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Tela de Login</title>
+</head>
+<body>
+    <div class="main-login">
+        <div class="left-login">
+            <h1>Que bom que você voltou!<br>Entre e complete suas missões.</h1>
+            <img src="pet1.png" alt="Pet">
+        </div>
+        <div class="right-login">
+            <div class="card-login">
+                <div class="textfield">
+                    <label for="e_mail">E-Mail:</label>
+                    <input type="text" name="e_mail" placeholder="Digite seu E-Mail">
+                </div>
+                <div class="textfield">
+                    <label for="senha">Senha:</label>
+                    <input type="password" name="senha" placeholder="Digite sua senha">
+                </div>
+                <button class="button-login">Entrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.button-login').addEventListener('click', () => {
+            // Coleta os dados do formulário
+            const credenciais = {
+                email: document.querySelector('[name="e_mail"]').value,
+                senha: document.querySelector('[name="senha"]').value,
+            };
+
+            // Envia os dados para o backend
+            fetch('http://127.0.0.1:5000/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(credenciais),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(err => { throw new Error(err.mensagem); });
+                }
+                return response.json();
+            })
+            .then(data => {
+                alert(data.mensagem); // Exibe mensagem de sucesso
+                window.location.href = "sucesso.html"; // Redireciona para outra página
+            })
+            .catch(error => {
+                alert(`Erro: ${error.message}`); // Exibe mensagem de erro
+            });
+        });
+    </script>
+</body>
+</html>
