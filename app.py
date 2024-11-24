@@ -104,7 +104,15 @@ def validar_login():
 
 @app.route('/home', methods=['GET'])
 def tela_inicial():
-    return render_template('home.html')  # Página de cadastro
+    return render_template('home.html')
+
+@app.route('/metas', methods=['GET'])
+def tela_metas():
+    return render_template('metas.html')
+
+@app.route('/progresso', methods=['GET'])
+def tela_progresso():
+    return render_template('progresso.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
