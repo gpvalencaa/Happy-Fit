@@ -102,5 +102,9 @@ def validar_login():
         # Aqui você pode renderizar a página de login com o formulário HTML
         return render_template('login.html')  # Retorna a página de login
 
+@app.route('/home', methods=['GET'])
+def tela_inicial():
+    return render_template('home.html')  # Página de cadastro
+
 if __name__ == '__main__':
     app.run(debug=True)
