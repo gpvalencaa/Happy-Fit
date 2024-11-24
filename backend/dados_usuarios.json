@@ -14,5 +14,13 @@
         "data_nascimento": "2024-11-02",
         "altura": "231",
         "sexo": "Feminino"
+    },
+    {
+        "nome": "Alice",
+        "email": "pudim@gmail.com",
+        "senha": "324",
+        "data_nascimento": "2024-11-01",
+        "altura": "113",
+        "sexo": "Prefiro n\u00e3o informar"
     }
 ]
