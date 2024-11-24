@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Página Inicial</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Varela Round', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #55c5e7;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
+            height: 80%;
+            background: #ffffff;
+            box-shadow: 0px 10px 40px -12px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .left-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .left-section img {
+            max-width: 90%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .message {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #333;
+            line-height: 1.4;
+            font-weight: bold;
+        }
+
+        .right-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .right-section .botão {
+            width: 150px;
+            padding: 15px 0px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #000000;
+            cursor: pointer;
+            box-shadow: 0px 10px 40px -12px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s;
+        }
+
+        .right-section .botão:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="left-section">
+            <img src="pet1.png" alt="Imagem Ilustrativa">
+            <div class="message">
+                Bem-vindo ao INÍCIO!<br>Escolha uma das opções abaixo para começar.
+            </div>
+        </div>
+        <div class="right-section">
+            <button class="botão" onclick="window.location.href='progresso.html'">PROGRESSO</button>
+            <button class="botão" onclick="window.location.href='metas.html'">METAS</button>
+        </div>
+    </div>
+</body>
+</html>
