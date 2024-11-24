@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Tela de Cadastro</title>
+</head>
+<body>
+<div class="main-cadastro">
+    <div class="left-cadastro">
+        <h1>Seja bem-vindo(a)!<br>Cadastre-se para começar a sua jornada.</h1>
+        <img src="{{ url_for('static', filename='img/pet1.png') }}" alt="Pet">
+    </div>
+    <div class="right-cadastro">
+        <div class="card-cadastro">
+            <div class="textfield">
+                <label for="nome">Nome:</label>
+                <input type="text" name="nome" placeholder="Digite seu nome">
+            </div>
+            <div class="textfield">
+                <label for="email">E-Mail:</label>
+                <input type="text" name="email" placeholder="Digite seu E-Mail">
+            </div>
+            <div class="textfield">
+                <label for="senha">Senha:</label>
+                <input type="password" name="senha" placeholder="Crie sua senha">
+            </div>
+            <div class="textfield">
+                <label for="data_nascimento">Data de Nascimento:</label>
+                <input type="date" name="data_nascimento">
+            </div>
+            <div class="textfield">
+                <label for="altura">Altura (em centímetros):</label>
+                <input type="text" name="altura" placeholder="Digite sua altura">
+            </div>
+            <div class="textfield">
+                <label for="sexo">Sexo:</label>
+                <select name="sexo" id="sexo">
+                    <option value="" disabled selected>Selecione seu sexo</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                    <option value="Prefiro não informar">Prefiro não informar</option>
+                </select>
+            </div>
+            <button class="button-cadastro">Enviar</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.querySelector('.button-cadastro').addEventListener('click', (event) => {
+        event.preventDefault(); // Impede o envio do formulário padrão
+
+        // Coleta os dados do formulário
+        const usuario = {
+            nome: document.querySelector('[name="nome"]').value,
+            email: document.querySelector('[name="email"]').value,
+            senha: document.querySelector('[name="senha"]').value,
+            data_nascimento: document.querySelector('[name="data_nascimento"]').value,
+            altura: document.querySelector('[name="altura"]').value,
+            sexo: document.querySelector('[name="sexo"]').value,
+        };
+
+        // Verifica se todos os campos obrigatórios estão preenchidos
+        if (!usuario.nome || !usuario.email || !usuario.senha || !usuario.data_nascimento || !usuario.altura || !usuario.sexo) {
+            alert("Por favor, preencha todos os campos.");
+            return;
+        }
+
+        // Envia os dados para o backend
+        fetch('http://127.0.0.1:5000/cadastrar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(usuario), // Envia o corpo da requisição
+        })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.mensagem); // Exibe a mensagem de sucesso ou erro
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert("Ocorreu um erro ao tentar cadastrar o usuário.");
+            });
+    });
+</script>
+</body>
+</html>

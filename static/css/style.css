@@ -128,3 +128,74 @@ body{
     background-position: right 10px center;
     background-size: 16px;
 }
+.main-login{
+    width: 100vw;
+    height: 100vh;
+    background: #55c5e7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-login{
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.left-login > h1{
+    font-size: 2.2vw;
+    color: #000000;
+}
+
+.left-login-image{
+    width: 1vw;
+}
+
+.left-login > h1{
+    color:black
+}
+
+.right-login{
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-login{
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0px 10px 40px #000000;
+}
+
+.card-login > h1{
+    color: #000000;
+    font-weight: 800;
+    margin: 0;
+}
+
+.button-login{
+    width: 100%;
+    padding: 15px 0px;
+    margin: 25px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #000000;
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px #636363;
+}
