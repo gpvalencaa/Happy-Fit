@@ -14,7 +14,8 @@
     </div>
     <div class="right-cadastro">
         <div class="card-cadastro">
-            <form id="cadastroForm"> <!-- Colocando um ID no formulário -->
+            <!-- O Formulário de Cadastro -->
+            <form id="cadastroForm" method="POST"> <!-- Agora com method="POST" -->
                 <div class="textfield">
                     <label for="nome">Nome:</label>
                     <input type="text" name="nome" placeholder="Digite seu nome" required>
@@ -33,7 +34,7 @@
                 </div>
                 <div class="textfield">
                     <label for="altura">Altura (em centímetros):</label>
-                    <input type="number" name="altura" placeholder="Digite sua altura" required>
+                    <input type="text" name="altura" placeholder="Digite sua altura" required>
                 </div>
                 <div class="textfield">
                     <label for="sexo">Sexo:</label>
@@ -44,50 +45,10 @@
                         <option value="Prefiro não informar">Prefiro não informar</option>
                     </select>
                 </div>
-                <button type="submit" class="button-cadastro">Enviar</button> <!-- Garantir que é um botão de submit -->
+                <button type="submit" class="button-cadastro">Enviar</button> <!-- Agora o botão de envio -->
             </form>
         </div>
     </div>
 </div>
-
-<script>
-    // Previne o envio padrão do formulário e envia via JavaScript
-    document.getElementById('cadastroForm').addEventListener('submit', (event) => {
-        event.preventDefault(); // Impede o envio do formulário padrão
-
-        // Coleta os dados do formulário
-        const usuario = {
-            nome: document.querySelector('[name="nome"]').value,
-            email: document.querySelector('[name="email"]').value,
-            senha: document.querySelector('[name="senha"]').value,
-            data_nascimento: document.querySelector('[name="data_nascimento"]').value,
-            altura: document.querySelector('[name="altura"]').value,
-            sexo: document.querySelector('[name="sexo"]').value,
-        };
-
-        // Verifica se todos os campos obrigatórios estão preenchidos
-        if (!usuario.nome || !usuario.email || !usuario.senha || !usuario.data_nascimento || !usuario.altura || !usuario.sexo) {
-            alert("Por favor, preencha todos os campos.");
-            return;
-        }
-
-        // Envia os dados para o backend
-        fetch('http://127.0.0.1:5000/cadastrar', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(usuario), // Envia os dados para o backend
-        })
-            .then(response => response.json())
-            .then(data => {
-                alert(data.mensagem); // Exibe a mensagem de sucesso ou erro
-            })
-            .catch(error => {
-                console.error('Erro:', error);
-                alert("Ocorreu um erro ao tentar cadastrar o usuário.");
-            });
-    });
-</script>
 </body>
 </html>

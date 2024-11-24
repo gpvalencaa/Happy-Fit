@@ -31,8 +31,8 @@ def home():
 @app.route('/cadastrar', methods=['GET', 'POST'])
 def cadastrar_usuario():
     if request.method == 'POST':
-        # Lógica de cadastro via POST (dados enviados pelo formulário)
-        dados_recebidos = request.form  # Recebe os dados do formulário
+        # Captura os dados enviados pelo formulário
+        dados_recebidos = request.form  # Captura os dados do formulário (não via JSON)
         nome = dados_recebidos.get('nome')
         email = dados_recebidos.get('email')
         senha = dados_recebidos.get('senha')
@@ -43,7 +43,7 @@ def cadastrar_usuario():
         # Valida campos obrigatórios
         campos_obrigatorios = ['nome', 'email', 'senha', 'data_nascimento', 'altura', 'sexo']
         for campo in campos_obrigatorios:
-            if not locals().get(campo):
+            if not locals().get(campo):  # Verifica se o campo foi preenchido
                 return jsonify({"mensagem": f"Campo '{campo}' é obrigatório."}), 400
 
         usuarios = ler_dados()  # Carrega usuários existentes
