@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progresso do Usuário</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #a8e3ff, #d7f3ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+      background: #fff;
+      padding: 20px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #333;
+    }
+
+    .profile {
+      margin-top: 20px;
+    }
+
+    #nivel {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 20px;
+      background: #e0e0e0;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 20px 0;
+      position: relative;
+    }
+
+    .progress {
+      height: 100%;
+      background: #4caf50;
+      width: 0;
+      transition: width 0.4s ease-in-out;
+    }
+
+    #pontos {
+      font-size: 16px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Progresso do Usuário</h1>
+    <div class="profile">
+      <span id="nivel">Nível: --</span>
+      <div class="progress-bar">
+        <div class="progress" id="progress"></div>
+      </div>
+      <span id="pontos">Pontos: --</span>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      // Extrair o ID da URL atual
+      const urlParts = window.location.pathname.split("/");
+      const userId = urlParts[urlParts.length - 1];
+
+      if (!userId) {
+        console.error("Usuário não encontrado!");
+        return;
+      }
+
+      try {
+        const response = await fetch(`http://localhost:5000/usuarios/${userId}`);
+        if (!response.ok) throw new Error("Erro ao buscar dados");
+
+        const data = await response.json();
+
+        // Atualizar nível
+        document.getElementById("nivel").innerText = `Nível: ${data.nivel}`;
+
+        // Atualizar pontos e progresso
+        document.getElementById("pontos").innerText = `Pontos: ${data.pontos}`;
+        const progressPercentage = (data.pontos / data.maxPontos) * 100;
+        document.getElementById("progress").style.width = `${progressPercentage}%`;
+      } catch (error) {
+        console.error("Erro ao carregar os dados:", error);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,26 +1,26 @@
 [
     {
-        "nome": "Teste Luiz",
-        "email": "testeluiz@teste.com",
-        "senha": "testeLuiz",
-        "data_nascimento": "2002-10-10",
-        "altura": "160",
-        "sexo": "Feminino"
+        "id": 1,
+        "nome": "Guilherme Pereira Valen\u00e7a",
+        "email": "gpereiravalenca@gmail.com",
+        "senha": "1234",
+        "data_nascimento": "1111-11-11",
+        "altura": "1111",
+        "sexo": "Masculino",
+        "nivel": 1,
+        "pontos": 0,
+        "ossos": 500
     },
     {
-        "nome": "Alice",
-        "email": "testealice@gmail.com",
-        "senha": "12323",
-        "data_nascimento": "2024-11-02",
-        "altura": "231",
-        "sexo": "Feminino"
-    },
-    {
-        "nome": "Alice",
-        "email": "pudim@gmail.com",
-        "senha": "324",
-        "data_nascimento": "2024-11-01",
-        "altura": "113",
-        "sexo": "Prefiro n\u00e3o informar"
+        "id": 2,
+        "nome": "Luiz Daros",
+        "email": "luiz@daros.com",
+        "senha": "senha",
+        "data_nascimento": "1111-11-11",
+        "altura": "111",
+        "sexo": "Masculino",
+        "nivel": 1,
+        "pontos": 0,
+        "ossos": 500
     }
 ]

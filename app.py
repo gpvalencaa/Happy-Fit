@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, redirect, request, jsonify, render_template
 from flask_cors import CORS
 import json
 import os
@@ -14,9 +14,11 @@ ARQUIVO_JSON = os.path.join(BASE_DIR, "backend", "dados_usuarios.json")
 def ler_dados():
     if not os.path.exists(ARQUIVO_JSON):
         return []  # Retorna lista vazia se o arquivo não existir
+    if os.path.getsize(ARQUIVO_JSON) == 0:  # Verifica se o arquivo está vazio
+        return []  # Retorna lista vazia se o arquivo estiver vazio
     with open(ARQUIVO_JSON, 'r') as arquivo:
         return json.load(arquivo)
-
+    
 # Função para salvar os dados no arquivo JSON
 def salvar_dados(dados):
     with open(ARQUIVO_JSON, 'w') as arquivo:
@@ -52,13 +54,23 @@ def cadastrar_usuario():
         if any(usuario['email'] == email for usuario in usuarios):
             return jsonify({"mensagem": "E-mail já cadastrado."}), 409
 
+        # Gera um ID autoincremental
+        if usuarios:
+            novo_id = max(usuario['id'] for usuario in usuarios) + 1
+        else:
+            novo_id = 1
+
         novo_usuario = {
+            "id": novo_id,
             "nome": nome,
             "email": email,
             "senha": senha,
             "data_nascimento": data_nascimento,
             "altura": altura,
             "sexo": sexo,
+            "nivel": 1,
+            "pontos": 0,
+            "ossos": 500
         }
         usuarios.append(novo_usuario)  # Adiciona o novo usuário
         salvar_dados(usuarios)  # Salva no arquivo JSON
@@ -73,6 +85,15 @@ def cadastrar_usuario():
 def listar_usuarios():
     usuarios = ler_dados()
     return jsonify(usuarios)
+
+@app.route('/usuarios/<int:usuario_id>', methods=['GET'])
+def obter_usuario(usuario_id):
+    usuarios = ler_dados()
+    # Procure o usuário pelo ID
+    usuario = next((u for u in usuarios if u['id'] == usuario_id), None)
+    if usuario is not None:
+        return jsonify(usuario), 200  # Retorne o usuário encontrado
+    return jsonify({'erro': 'Usuário não encontrado'}), 404  # Retorne 404 se não encontrado
 
 # Rota para login
 @app.route('/login', methods=['GET', 'POST'])
@@ -94,13 +115,29 @@ def validar_login():
         # Busca o usuário pelo e-mail e senha
         for usuario in usuarios:
             if usuario.get('email') == email and usuario.get('senha') == senha:
-                return jsonify({"mensagem": "Login realizado com sucesso!"}), 200
+                redirect(f"/home/{usuario['id']}")
+                return jsonify({"mensagem": "Login bem-sucedido!", "id": usuario['id']}), 200
 
         return jsonify({"mensagem": "E-mail ou senha inválidos."}), 401
 
     elif request.method == 'GET':
         # Aqui você pode renderizar a página de login com o formulário HTML
         return render_template('login.html')  # Retorna a página de login
+
+@app.route('/home/<int:id>')
+def home_usuario(id):
+    usuarios = ler_dados()  # Carrega a lista de usuários
+
+    # Busca o usuário pelo ID fornecido
+    usuario = next((u for u in usuarios if u['id'] == id), None)
+
+    if usuario:
+        # Renderiza a página com os dados do usuário
+        return render_template('home.html', usuario=usuario)
+    else:
+        # Retorna um erro se o usuário não for encontrado
+        return jsonify({"mensagem": "Usuário não encontrado."}), 404
+
 
 @app.route('/home', methods=['GET'])
 def tela_inicial():
