@@ -307,6 +307,25 @@ def atualizar_usuario(usuario_id):
 
 #     return jsonify({"mensagem": "E-mail ou senha inválidos."}), 401
 
+@app.route('/usuarios/adicionar_pontos/<int:usuario_id>', methods=['POST'])
+def adicionar_pontos(usuario_id):
+    usuarios = carregar_usuarios()  # Carregar dados do arquivo JSON
+
+    # Encontrar o usuário pelo ID
+    usuario = next((u for u in usuarios if u['id'] == usuario_id), None)
+    if not usuario:
+        return jsonify({"erro": "Usuário não encontrado"}), 404
+
+    dados = request.get_json()
+
+    # Somar pontos ao usuário
+    if 'pontos' in dados:
+        usuario['pontos'] += dados['pontos']  # Adiciona os pontos recebidos
+
+    salvar_dados(usuarios)  # Salvar os dados atualizados no arquivo JSON
+
+    return jsonify(usuario), 200
+
 # Rota para a home do usuário
 @app.route('/home/<int:user_id>')
 def home_usuario(user_id):
