@@ -212,7 +212,7 @@ def cadastrar_usuario():
         }
         usuarios.append(novo_usuario)
         salvar_dados(usuarios)
-        return jsonify({"mensagem": "Cadastro realizado com sucesso!"}), 201
+        return render_template('index.html')
 
     return render_template('cadastro.html')
 
