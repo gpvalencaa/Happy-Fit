@@ -76,33 +76,57 @@
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", async () => {
-      // Extrair o ID da URL atual
-      const urlParts = window.location.pathname.split("/");
-      const userId = urlParts[urlParts.length - 1];
+document.addEventListener("DOMContentLoaded", async () => {
+  const params = new URLSearchParams(window.location.search);
+  const userId = params.get("userId");
 
-      if (!userId) {
-        console.error("Usuário não encontrado!");
-        return;
-      }
+  if (!userId) {
+    console.error("Usuário não encontrado!");
+    return;
+  }
 
-      try {
-        const response = await fetch(`http://localhost:5000/usuarios/${userId}`);
-        if (!response.ok) throw new Error("Erro ao buscar dados");
+  try {
+    const response = await fetch(`http://localhost:5000/usuarios/${userId}`);
+    if (!response.ok) throw new Error("Erro ao buscar dados");
 
-        const data = await response.json();
+    const data = await response.json();
+    const maxPontos = 1000;
 
-        // Atualizar nível
-        document.getElementById("nivel").innerText = `Nível: ${data.nivel}`;
+    // Atualizar nível e pontos no front-end
+    let pontosAtualizados = data.pontos;
+    let nivelAtualizado = data.nivel;
 
-        // Atualizar pontos e progresso
-        document.getElementById("pontos").innerText = `Pontos: ${data.pontos}`;
-        const progressPercentage = (data.pontos / data.maxPontos) * 100;
-        document.getElementById("progress").style.width = `${progressPercentage}%`;
-      } catch (error) {
-        console.error("Erro ao carregar os dados:", error);
-      }
+    while (pontosAtualizados >= maxPontos) {
+      pontosAtualizados -= maxPontos;
+      nivelAtualizado += 1;
+    }
+
+    // Atualizar os elementos no front-end
+    document.getElementById("nivel").innerText = `Nível: ${nivelAtualizado}`;
+    document.getElementById("pontos").innerText = `Pontos: ${pontosAtualizados}`;
+    const progressPercentage = (pontosAtualizados / maxPontos) * 100;
+    document.getElementById("progress").style.width = `${progressPercentage}%`;
+
+    // Enviar os dados atualizados para o backend
+    const updateResponse = await fetch(`http://localhost:5000/usuarios/${userId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        nivel: nivelAtualizado,
+        pontos: pontosAtualizados
+      })
     });
+
+    if (!updateResponse.ok) throw new Error("Erro ao salvar dados no backend");
+
+    console.log("Dados salvos com sucesso no backend!");
+  } catch (error) {
+    console.error("Erro:", error);
+  }
+});
+
   </script>
 </body>
 </html>

@@ -58,5 +58,15 @@
         background-color: #45a049;
     }
 </style>
+
+<script>
+    // Caso queira verificar o estado de login no cliente:
+    const userId = sessionStorage.getItem('userId');
+    if (userId) {
+        // Redireciona automaticamente para a página inicial do usuário
+        window.location.href = `/home/${userId}`;
+    }
+</script>
+
 </body>
 </html>

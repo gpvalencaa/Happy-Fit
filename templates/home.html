@@ -89,11 +89,12 @@
         <div class="message">
             Bem-vindo ao INÍCIO!<br>Escolha uma das opções abaixo para começar.
         </div>
-    </div>
+    </div>  
     <div class="right-section">
-        <button class="botão" onclick="window.location.href='{{ url_for('tela_progresso') }}'">PROGRESSO</button>
-        <button class="botão" onclick="window.location.href='{{ url_for('tela_metas') }}'">METAS</button>
+        <button class="botão" onclick="window.location.href='/progresso?userId={{ userId }}'">PROGRESSO</button>
+        <button class="botão" onclick="window.location.href='/metas?userId={{ userId }}'">METAS</button>        
     </div>
 </div>
 </body>
 </html>
+
