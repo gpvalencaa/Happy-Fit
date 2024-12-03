@@ -185,8 +185,10 @@ def cadastrar_usuario():
         data_nascimento = dados_recebidos.get('data_nascimento')
         altura = dados_recebidos.get('altura')
         sexo = dados_recebidos.get('sexo')
+        etnia = dados_recebidos.get('sexo')
+        peso = dados_recebidos.get('peso')
 
-        campos_obrigatorios = ['nome', 'email', 'senha', 'data_nascimento', 'altura', 'sexo']
+        campos_obrigatorios = ['nome', 'email', 'senha', 'data_nascimento', 'altura', 'sexo', 'peso']
         for campo in campos_obrigatorios:
             if not locals().get(campo):
                 return jsonify({"mensagem": f"Campo '{campo}' é obrigatório."}), 400
@@ -208,7 +210,15 @@ def cadastrar_usuario():
             "sexo": sexo,
             "nivel": 1,
             "pontos": 0,
-            "ossos": 500
+            'etnia': etnia,
+            'peso': int(peso),
+            'missao1': False,
+            'missao2': False,
+            'missao3': False,
+            'missao4': False,
+            'missao5': False,
+            'missao6': False,
+            
         }
         usuarios.append(novo_usuario)
         salvar_dados(usuarios)

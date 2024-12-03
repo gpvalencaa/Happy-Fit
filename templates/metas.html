@@ -128,208 +128,6 @@
             <div class="mission">
                 <span class="title">Missão 1:</span>
                 <span class="description">Beba 2L de água</span>
-                <button onclick="toggleButtonState(this)">Concluir</button>
-            </div>
-            <div class="mission">
-                <span class="title">Missão 2:</span>
-                <span class="description">Faça uma caminhada de 30 minutos</span>
-                <button onclick="toggleButtonState(this)">Concluir</button>
-            </div>
-            <div class="mission">
-                <span class="title">Missão 3:</span>
-                <span class="description">Faça seu exercício diário</span>
-                <button onclick="toggleButtonState(this)">Concluir</button>
-            </div>
-            <div class="mission">
-                <span class="title">Missão 4:</span>
-                <span class="description">Beba 2L de água</span>
-                <button onclick="toggleButtonState(this)">Concluir</button>
-            </div>
-            <div class="mission">
-                <span class="title">Missão 5:</span>
-                <span class="description">Faça uma caminhada de 30 minutos</span>
-                <button onclick="toggleButtonState(this)">Concluir</button>
-            </div>
-            <div class="mission">
-                <span class="title">Missão 6:</span>
-                <span class="description">Adicione a sua missão</span>
-                <button onclick="toggleButtonState(this)">Concluir</button>
-            </div>
-        </div>
-        <div class="add-mission">
-            <input type="text" id="newMission" placeholder="Digite uma nova missão" />
-            <button onclick="addMission()">Adicionar Missão</button>
-        </div>
-    </main>
-</div>
-<script>
-    function toggleButtonState(button) {
-        button.classList.toggle('blue');
-        button.textContent = button.classList.contains('blue') ? 'Concluído' : 'Concluir';
-    }
-
-    function addMission() {
-        const missionInput = document.getElementById('newMission');
-        const missionText = missionInput.value.trim();
-
-        if (missionText === '') {
-            alert('Por favor, digite uma missão válida.');
-            return;
-        }
-
-        const missionsContainer = document.getElementById('missions');
-
-        // Cria uma nova missão
-        const newMissionDiv = document.createElement('div');
-        newMissionDiv.classList.add('mission');
-
-        newMissionDiv.innerHTML = `
-                <span class="title">Nova Missão:</span>
-                <span class="description">${missionText}</span>
-                <button onclick="toggleButtonState(this)">Concluir</button>
-            `;
-
-        // Adiciona a missão ao container
-        missionsContainer.appendChild(newMissionDiv);
-
-        // Limpa o campo de entrada
-        missionInput.value = '';
-    }
-</script>
-</body>
-</html> -->
-
-<!-- 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Missões Diárias</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to right, #b2f0e7, #c1d3f9);
-        }
-
-        .container {
-            max-width: 100%;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 90%;
-            max-width: 800px;
-            margin-bottom: 20px;
-        }
-
-        header h1 {
-            font-size: 2em;
-            color: #000;
-            text-transform: capitalize;
-        }
-
-        .user-icon {
-            font-size: 2em;
-            cursor: pointer;
-        }
-
-        main {
-            width: 90%;
-            max-width: 800px;
-        }
-
-        .missions {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .mission {
-            background: #fff;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .mission .title {
-            font-weight: bold;
-            color: #333;
-        }
-
-        .mission .description {
-            flex: 1;
-            margin: 0 10px;
-            text-align: center;
-            font-size: 1rem;
-            color: #555;
-        }
-
-        .mission button {
-            font-size: 1rem;
-            padding: 10px 15px;
-            background-color: #27ae60;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .mission button.blue {
-            background-color: #3498db; /* Azul */
-        }
-
-        .add-mission {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        .add-mission input {
-            padding: 10px;
-            margin-bottom: 10px;
-            width: 80%;
-            max-width: 300px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        .add-mission button {
-            font-size: 1rem;
-            padding: 10px 15px;
-            background-color: #27ae60;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-    </style>
-</head>
-<body>
-<div class="container">
-    <header>
-        <h1>Missões Diárias</h1>
-        <div class="user-icon">👤</div>
-    </header>
-    <main>
-        <div class="missions" id="missions">
-            <div class="mission">
-                <span class="title">Missão 1:</span>
-                <span class="description">Beba 2L de água</span>
                 <button onclick="completeMission(this)">Concluir</button>
             </div>
             <div class="mission">
@@ -357,242 +155,6 @@
                 <span class="description">Adicione a sua missão</span>
                 <button onclick="completeMission(this)">Concluir</button>
             </div>
-        </div>
-        <div class="add-mission">
-            <input type="text" id="newMission" placeholder="Digite uma nova missão" />
-            <button onclick="addMission()">Adicionar Missão</button>
-        </div>
-    </main>
-</div>
-
-<script>
-    const userId = new URLSearchParams(window.location.search).get("userId");
-
-    // Função para completar a missão e adicionar pontos ao usuário
-    async function completeMission(button) {
-        button.classList.toggle('blue');
-        button.textContent = button.classList.contains('blue') ? 'Concluído' : 'Concluir';
-
-        if (userId) {
-            try {
-                // Enviar uma requisição PUT para adicionar 300 pontos
-                const response = await fetch(`http://localhost:5000/usuarios/${userId}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ pontos: 300 })
-                });
-
-                if (!response.ok) {
-                    throw new Error("Erro ao atualizar os pontos do usuário.");
-                }
-
-                const updatedUser = await response.json();
-                console.log('Usuário atualizado:', updatedUser);
-                alert("Você ganhou 300 pontos! Boa missão.");
-            } catch (error) {
-                console.error("Erro ao completar a missão:", error);
-                alert("Houve um erro ao atualizar os pontos.");
-            }
-        } else {
-            alert("Usuário não encontrado.");
-        }
-    }
-
-    // Função para adicionar uma nova missão
-    function addMission() {
-        const missionInput = document.getElementById('newMission');
-        const missionText = missionInput.value.trim();
-
-        if (missionText === '') {
-            alert('Por favor, digite uma missão válida.');
-            return;
-        }
-
-        const missionsContainer = document.getElementById('missions');
-
-        // Cria uma nova missão
-        const newMissionDiv = document.createElement('div');
-        newMissionDiv.classList.add('mission');
-
-        newMissionDiv.innerHTML = `
-            <span class="title">Nova Missão:</span>
-            <span class="description">${missionText}</span>
-            <button onclick="completeMission(this)">Concluir</button>
-        `;
-
-        // Adiciona a missão ao container
-        missionsContainer.appendChild(newMissionDiv);
-
-        // Limpa o campo de entrada
-        missionInput.value = '';
-    }
-</script>
-</body>
-</html> -->
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Missões Diárias</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to right, #b2f0e7, #c1d3f9);
-        }
-
-        .container {
-            max-width: 100%;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 90%;
-            max-width: 800px;
-            margin-bottom: 20px;
-        }
-
-        header h1 {
-            font-size: 2em;
-            color: #000;
-            text-transform: capitalize;
-        }
-
-        .user-icon {
-            font-size: 2em;
-            cursor: pointer;
-        }
-
-        main {
-            width: 90%;
-            max-width: 800px;
-        }
-
-        .missions {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .mission {
-            background: #fff;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .mission .title {
-            font-weight: bold;
-            color: #333;
-        }
-
-        .mission .description {
-            flex: 1;
-            margin: 0 10px;
-            text-align: center;
-            font-size: 1rem;
-            color: #555;
-        }
-
-        .mission button {
-            font-size: 1rem;
-            padding: 10px 15px;
-            background-color: #27ae60;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .mission button.blue {
-            background-color: #3498db; /* Azul */
-        }
-
-        .add-mission {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        .add-mission input {
-            padding: 10px;
-            margin-bottom: 10px;
-            width: 80%;
-            max-width: 300px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        .add-mission button {
-            font-size: 1rem;
-            padding: 10px 15px;
-            background-color: #27ae60;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-    </style>
-</head>
-<body>
-<div class="container">
-    <header>
-        <h1>Missões Diárias</h1>
-        <div class="user-icon">👤</div>
-    </header>
-    <main>
-        <div class="missions" id="missions">
-            <div class="mission">
-                <span class="title">Missão 1:</span>
-                <span class="description">Beba 2L de água</span>
-                <button onclick="completeMission(this)">Concluir</button>
-            </div>
-            <div class="mission">
-                <span class="title">Missão 2:</span>
-                <span class="description">Faça uma caminhada de 30 minutos</span>
-                <button onclick="completeMission(this)">Concluir</button>
-            </div>
-            <div class="mission">
-                <span class="title">Missão 3:</span>
-                <span class="description">Faça seu exercício diário</span>
-                <button onclick="completeMission(this)">Concluir</button>
-            </div>
-            <div class="mission">
-                <span class="title">Missão 4:</span>
-                <span class="description">Beba 2L de água</span>
-                <button onclick="completeMission(this)">Concluir</button>
-            </div>
-            <div class="mission">
-                <span class="title">Missão 5:</span>
-                <span class="description">Faça uma caminhada de 30 minutos</span>
-                <button onclick="completeMission(this)">Concluir</button>
-            </div>
-            <div class="mission">
-                <span class="title">Missão 6:</span>
-                <span class="description">Adicione a sua missão</span>
-                <button onclick="completeMission(this)">Concluir</button>
-            </div>
-        </div>
-        <div class="add-mission">
-            <input type="text" id="newMission" placeholder="Digite uma nova missão" />
-            <button onclick="addMission()">Adicionar Missão</button>
         </div>
     </main>
 </div>
@@ -632,34 +194,240 @@
         }
     }
 
-    // Função para adicionar uma nova missão
-    function addMission() {
-        const missionInput = document.getElementById('newMission');
-        const missionText = missionInput.value.trim();
+</script>
+</body>
+</html> -->
 
-        if (missionText === '') {
-            alert('Por favor, digite uma missão válida.');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Missões Diárias</title>
+    <style>
+            body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #b2f0e7, #c1d3f9);
+        }
+
+        .container {
+            max-width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 2em;
+            color: #000;
+            text-transform: capitalize;
+        }
+
+        .user-icon {
+            font-size: 2em;
+            cursor: pointer;
+        }
+
+        main {
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .missions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .mission {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .mission .title {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .mission .description {
+            flex: 1;
+            margin: 0 10px;
+            text-align: center;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .mission button {
+            font-size: 1rem;
+            padding: 10px 15px;
+            background-color: #27ae60;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .mission button.blue {
+            background-color: #3498db; /* Azul */
+        }
+
+        .add-mission {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .add-mission input {
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 80%;
+            max-width: 300px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .add-mission button {
+            font-size: 1rem;
+            padding: 10px 15px;
+            background-color: #27ae60;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Missões Diárias</h1>
+        <div class="user-icon">👤</div>
+    </header>
+    <main>
+        <div class="missions" id="missions">
+            <div class="mission">
+                <span class="title">Missão 1:</span>
+                <span class="description">Beba 2L de água</span>
+                <button onclick="completeMission(this)">Concluir</button>
+            </div>
+            <div class="mission">
+                <span class="title">Missão 2:</span>
+                <span class="description">Faça uma caminhada de 30 minutos</span>
+                <button onclick="completeMission(this)">Concluir</button>
+            </div>
+            <div class="mission">
+                <span class="title">Missão 3:</span>
+                <span class="description">Faça seu exercício diário</span>
+                <button onclick="completeMission(this)">Concluir</button>
+            </div>
+            <div class="mission">
+                <span class="title">Missão 4:</span>
+                <span class="description">Beba 2L de água</span>
+                <button onclick="completeMission(this)">Concluir</button>
+            </div>
+            <div class="mission">
+                <span class="title">Missão 5:</span>
+                <span class="description">Faça uma caminhada de 30 minutos</span>
+                <button onclick="completeMission(this)">Concluir</button>
+            </div>
+            <div class="mission">
+                <span class="title">Missão 6:</span>
+                <span class="description">Adicione a sua missão</span>
+                <button onclick="completeMission(this)">Concluir</button>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+    // Aqui está a parte do código que você deve adicionar após o fechamento do <main>.
+
+    const userId = new URLSearchParams(window.location.search).get("userId");
+
+    // Função para pegar os dados do usuário
+    async function getUserData(userId) {
+        if (!userId) {
+            alert("Usuário não encontrado.");
             return;
         }
 
-        const missionsContainer = document.getElementById('missions');
+        try {
+            // Enviar uma requisição GET para pegar os dados do usuário
+            const response = await fetch(`http://localhost:5000/usuarios/${userId}`);
+            if (!response.ok) {
+                throw new Error("Erro ao buscar os dados do usuário.");
+            }
 
-        // Cria uma nova missão
-        const newMissionDiv = document.createElement('div');
-        newMissionDiv.classList.add('mission');
+            const userData = await response.json();
+            console.log('Dados do usuário:', userData);
+            
+            // Aqui, você pode personalizar a missão de beber água com base nos dados do usuário
+            const waterMission = document.querySelector('.missions .mission .description');
+            waterMission.textContent = `Beba ${userData.peso * 0.035} Litros de água, ${userData.nome || 'usuário'}!`;
 
-        newMissionDiv.innerHTML = ` 
-            <span class="title">Nova Missão:</span>
-            <span class="description">${missionText}</span>
-            <button onclick="completeMission(this)">Concluir</button>
-        `;
-
-        // Adiciona a missão ao container
-        missionsContainer.appendChild(newMissionDiv);
-
-        // Limpa o campo de entrada
-        missionInput.value = '';
+        } catch (error) {
+            console.error("Erro ao buscar os dados do usuário:", error);
+            alert("Houve um erro ao buscar os dados do usuário.");
+        }
     }
+
+    // Função para completar a missão e adicionar pontos ao usuário
+    async function completeMission(button) {
+        button.classList.toggle('blue');
+        button.textContent = button.classList.contains('blue') ? 'Concluído' : 'Concluir';
+
+        if (userId) {
+            try {
+                // Enviar uma requisição POST para adicionar 300 pontos
+                const response = await fetch(`http://localhost:5000/usuarios/adicionar_pontos/${userId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ pontos: 300 })  // Adiciona 300 pontos
+                });
+
+                if (!response.ok) {
+                    throw new Error("Erro ao atualizar os pontos do usuário.");
+                }
+
+                const updatedUser = await response.json();
+                console.log('Usuário atualizado:', updatedUser);
+                alert("Você ganhou 300 pontos! Boa missão.");
+            } catch (error) {
+                console.error("Erro ao completar a missão:", error);
+                alert("Houve um erro ao atualizar os pontos.");
+            }
+        } else {
+            alert("Usuário não encontrado.");
+        }
+    }
+
+    // Chame a função para pegar os dados do usuário assim que a página carregar
+    document.addEventListener("DOMContentLoaded", function () {
+        getUserData(userId); // Passa o userId obtido da URL
+    });
 </script>
+
 </body>
 </html>
