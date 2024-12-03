@@ -7,15 +7,14 @@
         "data_nascimento": "1111-11-11",
         "altura": "112",
         "sexo": "Masculino",
-        "nivel": 1,
-        "pontos": 0,
+        "nivel": 2,
+        "pontos": 800,
         "etnia": "Masculino",
         "peso": 99,
-        "missao1": false,
-        "missao2": false,
-        "missao3": false,
-        "missao4": false,
-        "missao5": false,
-        "missao6": false
+        "Missão 1": false,
+        "Missão 2": false,
+        "Missão 3": false,
+        "Missão 4": false,
+        "Missão 5": false
     }
 ]
