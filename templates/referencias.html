@@ -3,41 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <title>referencias</title>
+    <title>Referências</title>
     <style>
         body {
             margin: 0;
             font-family: 'Varela Round', sans-serif;
+            background-color: #55c5e7;
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #55c5e7;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 20px;
         }
 
         .container {
             width: 90%;
-            max-width: 900px;
+            max-width: 800px;
             background: #ffffff;
             box-shadow: 0px 10px 40px -12px rgba(0, 0, 0, 0.3);
             border-radius: 10px;
             padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
         }
 
-        .title {
-            font-size: 2rem;
+        .section-title {
+            font-size: 1.8rem;
             color: #333;
             text-align: center;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-top: 20px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
         }
 
         .content {
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: #333;
             line-height: 1.6;
             text-align: justify;
@@ -47,11 +46,21 @@
             font-weight: bold;
             color: #555;
         }
+
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 5px;
+        }
     </style>
 </head>
 <body>
 <div class="container">
-    <div class="title">Quantidade de Água Diária</div>
+    <!-- Seção da Água -->
+    <div class="section-title">Quantidade de Água Diária</div>
     <div class="content">
         Em média, um adulto deve consumir cerca de <span class="highlight">2 litros de água por dia</span>, mas essa quantidade pode variar conforme fatores individuais, como peso, altura, prática de atividades físicas e condições climáticas.
         Pessoas que suam mais ou vivem em locais quentes, por exemplo, podem precisar de até <span class="highlight">4 litros</span> diários, enquanto pacientes com restrições médicas podem ser limitados a <span class="highlight">1-1,5 litro</span>.
@@ -68,6 +77,18 @@
         <br><br>
         Segundo a <span class="highlight">Organização Mundial da Saúde (OMS)</span>, é possível calcular a ingestão ideal de água multiplicando <span class="highlight">35 ml pelo peso corporal em quilogramas</span>. Por exemplo, uma pessoa de 60 kg deve consumir aproximadamente <span class="highlight">2,1 litros</span> de água por dia (35 x 60).
     </div>
+
+    <div class="section-title">Meditação</div>
+    <div class="content">
+        A meditação é uma prática que promove o relaxamento e a calma da mente, sendo aplicável em qualquer ambiente. Ela reduz o estresse, ansiedade e melhora a concentração, oferecendo benefícios como:
+        <ul>
+            <li>Redução de insônia e controle emocional;</li>
+            <li>Ajuda no controle de pressão alta e glicemia;</li>
+            <li>Tratamento de transtornos compulsivos e depressão.</li>
+        </ul>
+        Para começar, pratique por 5 a 10 minutos diários em um local calmo, com postura confortável, controlando a respiração e mantendo o foco em mantras ou na própria respiração. Com a prática regular, a meditação melhora o bem-estar e qualidade de vida.
+    </div>
 </div>
 </body>
 </html>
+
