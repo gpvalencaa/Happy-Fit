@@ -85,16 +85,111 @@
 <div class="container">
 
     <div class="left-section">
-        <img src="{{ url_for('static', filename='img/pet1.png') }}" alt="Pet">
+        <!-- A imagem será carregada aqui -->
+        <img id="imagem-usuario" src="" alt="Imagem do Usuário" />
         <div class="message">
             Bem-vindo ao INÍCIO!<br>Escolha uma das opções abaixo para começar.
         </div>
-    </div>  
+    </div>
+
     <div class="right-section">
         <button class="botão" onclick="window.location.href='/progresso?userId={{ userId }}'">PROGRESSO</button>
-        <button class="botão" onclick="window.location.href='/metas?userId={{ userId }}'">METAS</button>        
+        <button class="botão" onclick="window.location.href='/metas?userId={{ userId }}'">METAS</button>
+        <button class="botão" onclick="window.location.href='/referencias?userId={{ userId }}'">A origem dos nossos dados</button>
     </div>
 </div>
+
+<script>
+    const usuarioId = window.location.pathname.split('/')[2];
+
+    const urlBaseImagens = "{{ url_for('static', filename='img/') }}";
+
+    function obterDadosUsuario(usuarioId) {
+        fetch(`/usuarios/${usuarioId}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro na requisição: ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                exibirImagemUsuario(data);
+            })
+            .catch(error => {
+                alert(`Erro ao obter dados do usuário: ${error.message}`);
+            });
+    }
+
+    function exibirImagemUsuario(dadosUsuario) {
+        const etnia = dadosUsuario.etnia;
+        const peso = dadosUsuario.peso;
+        const sexo = dadosUsuario.sexo;
+
+        let imagemEscolhida = '';
+
+        if (etnia === 'Preto') {
+            if (sexo === 'Masculino') {
+                if (peso < 60) {
+                    imagemEscolhida = 'negro_magro.png';
+                } else if (peso >= 60 && peso <= 80) {
+                    imagemEscolhida = 'negro_medio.png';
+                } else {
+                    imagemEscolhida = 'negro_gordo.png';
+                }
+            }else {
+                if (peso < 60) {
+                    imagemEscolhida = 'negra_magra.png';
+                } else if (peso >= 60 && peso <= 80) {
+                    imagemEscolhida = 'negra_media.png';
+                } else {
+                    imagemEscolhida = 'negra_gorda.png';
+                }
+            }
+        } else if (etnia === 'Branco') {
+            if (sexo === 'Masculino') {
+                if (peso < 60) {
+                    imagemEscolhida = 'branco_magro.png';
+                } else if (peso >= 60 && peso <= 80) {
+                    imagemEscolhida = 'branco_medio.png';
+                } else {
+                    imagemEscolhida = 'branco_gordo.png';
+                }
+            } else {
+                if (peso < 60) {
+                    imagemEscolhida = 'branca_magra.png';
+                } else if (peso >= 60 && peso <= 80) {
+                    imagemEscolhida = 'branca_media.png';
+                } else {
+                    imagemEscolhida = 'branca_gorda.png';
+                }
+            }
+        } else if (etnia === 'Pardo') {
+            if (sexo === 'Masculino') {
+                if (peso < 60) {
+                    imagemEscolhida = 'pardo_magro.png';
+                } else if (peso >= 60 && peso <= 80) {
+                    imagemEscolhida = 'pardo_medio.png';
+                } else {
+                    imagemEscolhida = 'pardo_gordo.png';
+                }
+            }else{
+                if (peso < 60) {
+                    imagemEscolhida = 'parda_magra.png';
+                } else if (peso >= 60 && peso <= 80) {
+                    imagemEscolhida = 'parda_media.png';
+                } else {
+                    imagemEscolhida = 'parda_gorda.png';
+                }
+            }
+        }
+
+        const imagemElemento = document.getElementById('imagem-usuario');
+        imagemElemento.src = `${urlBaseImagens}${imagemEscolhida}`;
+    }
+
+    window.onload = () => {
+        obterDadosUsuario(usuarioId);
+    }
+</script>
 </body>
 </html>
-
