@@ -217,7 +217,6 @@ def cadastrar_usuario():
             'missao3': False,
             'missao4': False,
             'missao5': False,
-            'missao6': False,
             
         }
         usuarios.append(novo_usuario)
@@ -317,24 +316,30 @@ def atualizar_usuario(usuario_id):
 
 #     return jsonify({"mensagem": "E-mail ou senha inválidos."}), 401
 
-@app.route('/usuarios/adicionar_pontos/<int:usuario_id>', methods=['POST'])
-def adicionar_pontos(usuario_id):
-    usuarios = carregar_usuarios()  # Carregar dados do arquivo JSON
+@app.route('/usuarios/<int:user_id>/missao', methods=['POST'])
+def concluir_missao(user_id):
+    usuarios = carregar_usuarios()  # Carrega a lista de usuários do arquivo JSON
+    data = request.json
+    missao = data.get("missao")
+    
+    # Encontra o usuário com o ID fornecido
+    user = next((u for u in usuarios if u["id"] == user_id), None)
+    if not user:
+        return jsonify({"error": "Usuário não encontrado"}), 404
 
-    # Encontrar o usuário pelo ID
-    usuario = next((u for u in usuarios if u['id'] == usuario_id), None)
-    if not usuario:
-        return jsonify({"erro": "Usuário não encontrado"}), 404
+    # Verifica se a missão foi fornecida e se ela é válida
+    if missao and missao in user:
+        user[missao] = True 
+        # Exemplo: Adiciona pontos ao concluir a missão (se necessário)
+        # user["pontos"] += 300 
+        
+        # Salva os dados atualizados no arquivo JSON
+        salvar_usuarios(usuarios)
 
-    dados = request.get_json()
+        return jsonify(user), 200
+    
+    return jsonify({"error": "Missão inválida"}), 400
 
-    # Somar pontos ao usuário
-    if 'pontos' in dados:
-        usuario['pontos'] += dados['pontos']  # Adiciona os pontos recebidos
-
-    salvar_dados(usuarios)  # Salvar os dados atualizados no arquivo JSON
-
-    return jsonify(usuario), 200
 
 # Rota para a home do usuário
 @app.route('/home/<int:user_id>')
