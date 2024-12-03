@@ -1,50 +1,21 @@
 [
     {
-        "id": 1,
-        "nome": "Guilherme Pereira Valen\u00e7a",
-        "email": "gpereiravalenca@gmail.com",
-        "senha": "1234",
+        "id": 7,
+        "nome": "qwer",
+        "email": "qwer@qwer",
+        "senha": "qewr",
         "data_nascimento": "1111-11-11",
-        "altura": "1111",
-        "sexo": "Masculino",
-        "nivel": 6,
-        "pontos": 200,
-        "ossos": 500
-    },
-    {
-        "id": 2,
-        "nome": "Luiz Daros",
-        "email": "luiz@daros.com",
-        "senha": "senha",
-        "data_nascimento": "1111-11-11",
-        "altura": "111",
+        "altura": "112",
         "sexo": "Masculino",
         "nivel": 1,
         "pontos": 0,
-        "ossos": 500
-    },
-    {
-        "id": 3,
-        "nome": "nome",
-        "email": "email@email",
-        "senha": "senha",
-        "data_nascimento": "1111-11-11",
-        "altura": "123",
-        "sexo": "Masculino",
-        "nivel": 1,
-        "pontos": 0,
-        "ossos": 500
-    },
-    {
-        "id": 4,
-        "nome": "123",
-        "email": "123@teste.com",
-        "senha": "123",
-        "data_nascimento": "3312-12-31",
-        "altura": "123",
-        "sexo": "Masculino",
-        "nivel": 1,
-        "pontos": 0,
-        "ossos": 500
+        "etnia": "Masculino",
+        "peso": 99,
+        "missao1": false,
+        "missao2": false,
+        "missao3": false,
+        "missao4": false,
+        "missao5": false,
+        "missao6": false
     }
 ]
