@@ -199,3 +199,17 @@ body{
     cursor: pointer;
     box-shadow: 0px 10px 40px -12px #636363;
 }
+
+.image-container {
+    width: 100%; /* Ajusta a largura do contêiner à largura da tela */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.responsive-image {
+    max-width: 50%; /* A imagem nunca será maior que a largura do contêiner */
+    max-height: 80vh; /* Limita a altura máxima à altura da viewport */
+    width: auto; /* Mantém as proporções */
+    height: auto; /* Mantém as proporções */
+}
