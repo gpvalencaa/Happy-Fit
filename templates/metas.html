@@ -278,6 +278,24 @@
         } else {
             alert("Usuário não encontrado.");
         }
+        if (userId) {
+            try {
+                const response = await fetch(`http://localhost:5000/usuarios/adicionar_pontos/${userId}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ pontos: 300 })
+                });
+
+                if (!response.ok) throw new Error("Erro ao atualizar os pontos do usuário.");
+                const updatedUser = await response.json();
+                alert("Você ganhou 300 pontos! Boa missão.");
+            } catch (error) {
+                console.error("Erro ao completar a missão:", error);
+                alert("Houve um erro ao atualizar os pontos.");
+            }
+        } else {
+            alert("Usuário não encontrado.");
+        }
     }
 
 

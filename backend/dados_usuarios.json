@@ -44,12 +44,12 @@
         "altura": "170",
         "sexo": "Masculino",
         "nivel": 1,
-        "pontos": 0,
+        "pontos": 300,
         "etnia": "Branco",
         "peso": 80,
-        "missao1": false,
-        "missao2": false,
-        "missao3": false,
+        "missao1": true,
+        "missao2": true,
+        "missao3": true,
         "missao4": false,
         "missao5": false
     }
