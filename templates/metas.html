@@ -6,7 +6,7 @@
     <title>Missões Diárias</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Varela+Round&display=swap');
-        
+
         body {
             margin: 0;
             font-family: 'Poppins', sans-serif;
@@ -213,35 +213,74 @@
     }
 
     // Função para completar a missão e enviar atualização ao servidor
+    // async function completeMission(button) {
+    //     button.classList.toggle('blue');
+    //     button.textContent = button.classList.contains('blue') ? 'Concluído' : 'Concluir';
+
+    //     if (userId) {
+    //         try {
+    //             const response = await fetch(`http://localhost:5000/usuarios/adicionar_pontos/${userId}`, {
+    //                 method: 'POST',
+    //                 headers: {
+    //                     'Content-Type': 'application/json'
+    //                 },
+    //                 body: JSON.stringify({ pontos: 300 })
+    //             });
+
+    //             if (!response.ok) {
+    //                 throw new Error("Erro ao atualizar os pontos do usuário.");
+    //             }
+
+    //             const updatedUser = await response.json();
+    //             console.log('Usuário atualizado:', updatedUser);
+    //             alert("Você ganhou 300 pontos! Boa missão.");
+    //         } catch (error) {
+    //             console.error("Erro ao completar a missão:", error);
+    //             alert("Houve um erro ao atualizar os pontos.");
+    //         }
+    //     } else {
+    //         alert("Usuário não encontrado.");
+    //     }
+    // }
     async function completeMission(button) {
+        const mission = button.closest('.mission');  // Encontra a missão mais próxima do botão
+        const missionTitle = mission.querySelector('.title').textContent.trim();  // Obtém o título da missão
+
+        // Extraímos o número da missão da string (ex: "Missão 1:" => "missao1")
+        const missionKey = 'missao' + missionTitle.split(' ')[1].replace(":", ""); 
+        console.log(missionKey)
+
         button.classList.toggle('blue');
         button.textContent = button.classList.contains('blue') ? 'Concluído' : 'Concluir';
 
         if (userId) {
             try {
-                const response = await fetch(`http://localhost:5000/usuarios/adicionar_pontos/${userId}`, {
+                // Envia a requisição para o backend para concluir a missão
+                const response = await fetch(`http://localhost:5000/usuarios/${userId}/missao`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ pontos: 300 })
+                    body: JSON.stringify({ missao: missionKey }) // Passa o nome da missão como 'missao1', 'missao2', etc.
                 });
 
                 if (!response.ok) {
-                    throw new Error("Erro ao atualizar os pontos do usuário.");
+                    throw new Error(`Erro ao concluir a missão. Status: ${response.status}`);
                 }
 
                 const updatedUser = await response.json();
                 console.log('Usuário atualizado:', updatedUser);
-                alert("Você ganhou 300 pontos! Boa missão.");
+                alert("Missão concluída com sucesso!");
             } catch (error) {
                 console.error("Erro ao completar a missão:", error);
-                alert("Houve um erro ao atualizar os pontos.");
+                alert("Houve um erro ao concluir a missão.");
             }
         } else {
             alert("Usuário não encontrado.");
         }
     }
+
+
 
     // Inicialização ao carregar a página
     document.addEventListener("DOMContentLoaded", async function () {

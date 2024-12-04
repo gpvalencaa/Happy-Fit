@@ -29,8 +29,8 @@
         "pontos": 300,
         "etnia": "Pardo",
         "peso": 323,
-        "missao1": false,
-        "missao2": false,
+        "missao1": true,
+        "missao2": true,
         "missao3": true,
         "missao4": false,
         "missao5": true
