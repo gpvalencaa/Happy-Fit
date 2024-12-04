@@ -34,5 +34,23 @@
         "missao3": true,
         "missao4": false,
         "missao5": true
+    },
+    {
+        "id": 10,
+        "nome": "Trajas",
+        "email": "trajas@trajas",
+        "senha": "trajas",
+        "data_nascimento": "1954-05-10",
+        "altura": "170",
+        "sexo": "Masculino",
+        "nivel": 1,
+        "pontos": 0,
+        "etnia": "Branco",
+        "peso": 80,
+        "missao1": false,
+        "missao2": false,
+        "missao3": false,
+        "missao4": false,
+        "missao5": false
     }
 ]
