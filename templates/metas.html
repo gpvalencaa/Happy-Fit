@@ -137,7 +137,7 @@
     </main>
 </div>
 
-<script>
+<!-- <script>
     async function completeMission(button) {
         button.classList.toggle('blue');
         button.textContent = button.classList.contains('blue') ? 'Concluído' : 'Concluir';
@@ -162,6 +162,92 @@
             alert("Usuário não encontrado.");
         }
     }
+</script> -->
+<script>
+    const userId = new URLSearchParams(window.location.search).get("userId");
+
+    // Função para buscar os dados do usuário
+    async function getUserData(userId) {
+        if (!userId) {
+            alert("Usuário não encontrado.");
+            return null;
+        }
+
+        try {
+            const response = await fetch(`http://localhost:5000/usuarios/${userId}`);
+            if (!response.ok) {
+                throw new Error("Erro ao buscar os dados do usuário.");
+            }
+            
+            
+            const userData = await response.json();
+            console.log('Dados do usuário:', userData);
+            const waterMission = document.querySelector('.missions .mission .description');
+            waterMission.textContent = `Beba ${(userData.peso * 0.035).toFixed(2)} Litros de água, ${userData.nome || 'usuário'}!`;
+            return userData;
+        } catch (error) {
+            console.error("Erro ao buscar os dados do usuário:", error);
+            alert("Houve um erro ao buscar os dados do usuário.");
+            return null;
+        }
+    }
+
+    // Função para atualizar os botões das missões
+    function updateMissionButtons(user) {
+        const missions = document.querySelectorAll('.missions .mission');
+
+        missions.forEach((mission, index) => {
+            const missionStatus = user[`missao${index + 1}`];
+            const button = mission.querySelector('button');
+            
+            if (missionStatus) {
+                button.textContent = 'Concluído';
+                button.classList.add('blue'); // Adiciona uma classe para diferenciar visualmente
+            } else {
+                button.textContent = 'Concluir';
+                button.classList.remove('blue');
+            }
+        });
+    }
+
+    // Função para completar a missão e enviar atualização ao servidor
+    async function completeMission(button) {
+        button.classList.toggle('blue');
+        button.textContent = button.classList.contains('blue') ? 'Concluído' : 'Concluir';
+
+        if (userId) {
+            try {
+                const response = await fetch(`http://localhost:5000/usuarios/adicionar_pontos/${userId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ pontos: 300 })
+                });
+
+                if (!response.ok) {
+                    throw new Error("Erro ao atualizar os pontos do usuário.");
+                }
+
+                const updatedUser = await response.json();
+                console.log('Usuário atualizado:', updatedUser);
+                alert("Você ganhou 300 pontos! Boa missão.");
+            } catch (error) {
+                console.error("Erro ao completar a missão:", error);
+                alert("Houve um erro ao atualizar os pontos.");
+            }
+        } else {
+            alert("Usuário não encontrado.");
+        }
+    }
+
+    // Inicialização ao carregar a página
+    document.addEventListener("DOMContentLoaded", async function () {
+        const userData = await getUserData(userId); // Busca os dados do usuário
+        if (userData) {
+            updateMissionButtons(userData); // Atualiza os botões das missões
+        }
+    });
 </script>
 </body>
 </html>

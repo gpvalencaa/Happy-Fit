@@ -1,23 +1,5 @@
 [
     {
-        "id": 7,
-        "nome": "teste",
-        "email": "teste@teste",
-        "senha": "teste",
-        "data_nascimento": "1111-11-11",
-        "altura": "112",
-        "sexo": "Masculino",
-        "nivel": 4,
-        "pontos": 900,
-        "etnia": "Preto",
-        "peso": 99,
-        "Miss\u00c3\u00a3o 1": false,
-        "Miss\u00c3\u00a3o 2": false,
-        "Miss\u00c3\u00a3o 3": false,
-        "Miss\u00c3\u00a3o 4": false,
-        "Miss\u00c3\u00a3o 5": false
-    },
-    {
         "id": 8,
         "nome": "123",
         "email": "123@123",
@@ -43,14 +25,14 @@
         "data_nascimento": "0311-12-12",
         "altura": "231",
         "sexo": "Masculino",
-        "nivel": 2,
-        "pontos": 800,
+        "nivel": 4,
+        "pontos": 300,
         "etnia": "Pardo",
         "peso": 323,
         "missao1": false,
         "missao2": false,
-        "missao3": false,
+        "missao3": true,
         "missao4": false,
-        "missao5": false
+        "missao5": true
     }
 ]
