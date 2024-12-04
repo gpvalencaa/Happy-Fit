@@ -26,7 +26,7 @@ def salvar_dados(dados):
 # Rota para a página inicial
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('landing.html')
 
 # Rota para cadastrar usuário
 @app.route('/cadastrar', methods=['GET', 'POST'])
