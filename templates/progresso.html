@@ -76,9 +76,9 @@
   </div>
 
   <script>
-document.addEventListener("DOMContentLoaded", async () => {
-  const params = new URLSearchParams(window.location.search);
-  const userId = params.get("userId");
+  document.addEventListener("DOMContentLoaded", async () => {
+    const params = new URLSearchParams(window.location.search);
+    const userId = params.get("userId");
 
   if (!userId) {
     console.error("Usuário não encontrado!");
