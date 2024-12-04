@@ -75,7 +75,7 @@ def cadastrar_usuario():
         }
         usuarios.append(novo_usuario)
         salvar_dados(usuarios)
-        return render_template('index.html')
+        return render_template('landing.html')
 
     return render_template('cadastro.html')
 
