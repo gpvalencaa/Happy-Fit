@@ -10,12 +10,12 @@
 <div class="main-login">
     <div class="left-login">
         <h1>Que bom que você voltou!<br>Entre e complete suas missões.</h1>
-        <img src="{{ url_for('static', filename='img/pet1.png') }}" alt="Pet">
+        <img src="{{ url_for('static', filename='img/pardo_medio.png') }}" alt="Pet">
     </div>
     <div class="right-login">
         <div class="card-login">
             <div class="textfield">
-                <label for="email">E-Mail:</label>
+                <label for="email">Email:</label>
                 <input type="text" name="email" placeholder="Digite seu E-Mail">
             </div>
             <div class="textfield">
@@ -28,41 +28,7 @@
 </div>
 
 <script>
-// document.querySelector('.button-login').addEventListener('click', () => {
-//     // Coleta os dados do formulário
-//     const credenciais = {
-//         email: document.querySelector('[name="email"]').value,
-//         senha: document.querySelector('[name="senha"]').value,
-//     };
-
-//     // Validação no frontend
-//     if (!credenciais.email || !credenciais.senha) {
-//         alert("Por favor, preencha todos os campos.");
-//         return;
-//     }
-
-//     // Envia os dados para o backend
-//     fetch('http://127.0.0.1:5000/login', {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify(credenciais),
-//     })
-//         .then(response => {
-//             if (!response.ok) {
-//                 return response.json().then(err => { throw new Error(err.mensagem); });
-//             }
-//             return response.json();
-//         })
-//         .then(data => {
-//             alert(data.mensagem); // Exibe mensagem de sucesso
-//             const usuarioId = data.id; // Pega o ID do usuário
-//             window.location.href = `/home/${usuarioId}`; // Redireciona para home/id
-//         })
-//         .catch(error => {
-//             alert(`Erro: ${error.message}`); // Exibe mensagem de erro
-//         });
-// });
-document.querySelector('.button-login').addEventListener('click', () => {
+    document.querySelector('.button-login').addEventListener('click', () => {
     const credenciais = {
         email: document.querySelector('[name="email"]').value,
         senha: document.querySelector('[name="senha"]').value,

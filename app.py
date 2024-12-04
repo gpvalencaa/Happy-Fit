@@ -1,8 +1,7 @@
-from flask import Flask, redirect, request, jsonify, render_template, url_for
+from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 import json
 import os
-
 app = Flask(__name__, template_folder="templates", static_folder="static")
 CORS(app)
 
@@ -40,10 +39,10 @@ def cadastrar_usuario():
         data_nascimento = dados_recebidos.get('data_nascimento')
         altura = dados_recebidos.get('altura')
         sexo = dados_recebidos.get('sexo')
-        etnia = dados_recebidos.get('sexo')
+        etnia = dados_recebidos.get('etnia')
         peso = dados_recebidos.get('peso')
 
-        campos_obrigatorios = ['nome', 'email', 'senha', 'data_nascimento', 'altura', 'sexo', 'peso']
+        campos_obrigatorios = ['nome', 'email', 'senha', 'data_nascimento', 'altura', 'sexo', 'peso','etnia']
         for campo in campos_obrigatorios:
             if not locals().get(campo):
                 return jsonify({"mensagem": f"Campo '{campo}' é obrigatório."}), 400
@@ -79,12 +78,6 @@ def cadastrar_usuario():
         return render_template('index.html')
 
     return render_template('cadastro.html')
-
-# Rota para listar todos os usuários
-@app.route('/usuarios', methods=['GET'])
-def listar_usuarios():
-    usuarios = ler_dados()
-    return jsonify(usuarios)
 
 @app.route('/usuarios/<int:usuario_id>', methods=['GET'])
 def obter_usuario(usuario_id):
@@ -206,6 +199,10 @@ def tela_metas():
 @app.route('/progresso', methods=['GET'])
 def tela_progresso():
     return render_template('progresso.html')
+
+@app.route('/referencias', methods=['GET'])
+def tela_referencias():
+    return render_template('referencias.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

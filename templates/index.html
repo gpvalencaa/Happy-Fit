@@ -14,17 +14,20 @@
         <button onclick="window.location.href='{{ url_for('cadastrar_usuario') }}'">Cadastrar</button>
         <button onclick="window.location.href='{{ url_for('validar_login') }}'">Login</button>
     </div>
+    <h1>Quem somos?</h1>
+    <div class="card-right">
+        <h1>O grupo, composto por 6 estudantes do 4º período de Engenharia da Computação, na UPE-Poli.</h1>
+    </div>
 </div>
-
 <style>
     body {
-        font-family: Arial, sans-serif;
+        margin: 0;
+        font-family: 'Varela Round', sans-serif;
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
-        background-color: #f0f0f0;
-        margin: 0;
+        background: linear-gradient(to right, #b2f0e7, #c1d3f9);
     }
 
     .main {
@@ -34,18 +37,19 @@
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         width: 100%;
-        max-width: 400px;
+        max-width: 600px;
     }
 
     .button-container {
         display: flex;
         justify-content: space-around;
         margin-top: 20px;
+        font-size: 40px;
     }
 
     button {
         padding: 10px 20px;
-        font-size: 16px;
+        font-size: 25px;
         cursor: pointer;
         background-color: #4CAF50;
         color: white;
