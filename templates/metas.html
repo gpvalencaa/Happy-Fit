@@ -9,6 +9,7 @@
             margin: 0;
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(to right, #b2f0e7, #c1d3f9);
+            color: #333;
         }
 
         .container {
@@ -17,65 +18,71 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 90%;
-            max-width: 800px;
-            margin-bottom: 20px;
+            text-align: center;
+            margin-bottom: 100px;//distancia entre o titulo e as missões
         }
 
         header h1 {
-            font-size: 2em;
-            color: #000;
+            font-size: 3.5em;
+            color: #2c3e50;
             text-transform: capitalize;
-        }
-
-        .user-icon {
-            font-size: 2em;
-            cursor: pointer;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            margin: 0;
         }
 
         main {
-            width: 90%;
-            max-width: 800px;
+            width: 100%;
+            max-width: 1000px;
         }
 
         .missions {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr); /* Duas colunas */
             gap: 20px;
+            justify-items: center;
         }
 
         .mission {
             background: #fff;
             border-radius: 10px;
             padding: 20px;
+            height: 150px; /* Altura fixa */
+            width: 400px; /* Largura fixa */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: space-between;
+            align-items: center;
+            text-align: center;
         }
 
         .mission .title {
             font-weight: bold;
+            font-size: 1.8rem;
             color: #333;
+            margin-bottom: 10px;
         }
 
         .mission .description {
-            flex: 1;
-            margin: 0 10px;
-            text-align: center;
-            font-size: 1rem;
+            flex-grow: 1; /* O texto cresce dentro do espaço */
+            font-size: 1.5rem;
             color: #555;
+            text-decoration: none;
+            margin: 10px 0;
+        }
+
+        .mission .description:hover {
+            text-decoration: underline;
+            color: #27ae60;
         }
 
         .mission button {
-            font-size: 1rem;
+            font-size: 1.3rem;
             padding: 10px 15px;
             background-color: #27ae60;
             color: #fff;
@@ -89,31 +96,8 @@
             background-color: #3498db; /* Azul */
         }
 
-        .add-mission {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        .add-mission input {
-            padding: 10px;
-            margin-bottom: 10px;
-            width: 80%;
-            max-width: 300px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        .add-mission button {
-            font-size: 1rem;
-            padding: 10px 15px;
-            background-color: #27ae60;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+        .mission button:hover {
+            background-color: #1e8449; /* Verde escuro */
         }
     </style>
 </head>
@@ -121,38 +105,32 @@
 <div class="container">
     <header>
         <h1>Missões Diárias</h1>
-        <div class="user-icon">👤</div>
     </header>
     <main>
         <div class="missions" id="missions">
             <div class="mission">
                 <span class="title">Missão 1:</span>
-                <span class="description">Beba 2L de água</span>
+                <a class="description" href="https://g1.globo.com/saude/noticia/2023/03/31/peso-x-35-e-a-outra-formula-da-agua-saiba-calcular-quanto-voce-deve-beber-por-dia-2-litros-nao-valem-para-todos.ghtml" target="_blank">Beba 2L de água</a>
                 <button onclick="completeMission(this)">Concluir</button>
             </div>
             <div class="mission">
                 <span class="title">Missão 2:</span>
-                <span class="description">Faça uma caminhada de 30 minutos</span>
+                <a class="description" href="https://www.tuasaude.com/como-meditar/" target="_blank">Meditação</a>
                 <button onclick="completeMission(this)">Concluir</button>
             </div>
             <div class="mission">
                 <span class="title">Missão 3:</span>
-                <span class="description">Faça seu exercício diário</span>
+                <a class="description" href="https://equipeesperancaevida.com/respiracao-do-idoso/" target="_blank">Exercício respiratório</a>
                 <button onclick="completeMission(this)">Concluir</button>
             </div>
             <div class="mission">
                 <span class="title">Missão 4:</span>
-                <span class="description">Beba 2L de água</span>
+                <a class="description" href="https://www.tuasaude.com/exercicios-de-alongamento-para-idosos/#google_vignette" target="_blank">Alongamento</a>
                 <button onclick="completeMission(this)">Concluir</button>
             </div>
             <div class="mission">
                 <span class="title">Missão 5:</span>
-                <span class="description">Faça uma caminhada de 30 minutos</span>
-                <button onclick="completeMission(this)">Concluir</button>
-            </div>
-            <div class="mission">
-                <span class="title">Missão 6:</span>
-                <span class="description">Adicione a sua missão</span>
+                <a class="description" href="https://www.tuasaude.com/atividade-fisica-para-idosos/" target="_blank">Faça uma caminhada de 30 minutos</a>
                 <button onclick="completeMission(this)">Concluir</button>
             </div>
         </div>
@@ -160,59 +138,21 @@
 </div>
 
 <script>
-    // Aqui está a parte do código que você deve adicionar após o fechamento do <main>.
-
-    const userId = new URLSearchParams(window.location.search).get("userId");
-
-    // Função para pegar os dados do usuário
-    async function getUserData(userId) {
-        if (!userId) {
-            alert("Usuário não encontrado.");
-            return;
-        }
-
-        try {
-            // Enviar uma requisição GET para pegar os dados do usuário
-            const response = await fetch(`http://localhost:5000/usuarios/${userId}`);
-            if (!response.ok) {
-                throw new Error("Erro ao buscar os dados do usuário.");
-            }
-
-            const userData = await response.json();
-            console.log('Dados do usuário:', userData);
-
-            // Aqui, você pode personalizar a missão de beber água com base nos dados do usuário
-            const waterMission = document.querySelector('.missions .mission .description');
-            waterMission.textContent = `Beba ${(userData.peso * 0.035).toFixed(2)} Litros de água, ${userData.nome || 'usuário'}!`;
-
-        } catch (error) {
-            console.error("Erro ao buscar os dados do usuário:", error);
-            alert("Houve um erro ao buscar os dados do usuário.");
-        }
-    }
-
-    // Função para completar a missão e adicionar pontos ao usuário
     async function completeMission(button) {
         button.classList.toggle('blue');
         button.textContent = button.classList.contains('blue') ? 'Concluído' : 'Concluir';
 
+        const userId = new URLSearchParams(window.location.search).get("userId");
         if (userId) {
             try {
-                // Enviar uma requisição POST para adicionar 300 pontos
                 const response = await fetch(`http://localhost:5000/usuarios/adicionar_pontos/${userId}`, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ pontos: 300 })  // Adiciona 300 pontos
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ pontos: 300 })
                 });
 
-                if (!response.ok) {
-                    throw new Error("Erro ao atualizar os pontos do usuário.");
-                }
-
+                if (!response.ok) throw new Error("Erro ao atualizar os pontos do usuário.");
                 const updatedUser = await response.json();
-                console.log('Usuário atualizado:', updatedUser);
                 alert("Você ganhou 300 pontos! Boa missão.");
             } catch (error) {
                 console.error("Erro ao completar a missão:", error);
@@ -222,12 +162,6 @@
             alert("Usuário não encontrado.");
         }
     }
-
-    // Chame a função para pegar os dados do usuário assim que a página carregar
-    document.addEventListener("DOMContentLoaded", function () {
-        getUserData(userId); // Passa o userId obtido da URL
-    });
 </script>
-
 </body>
 </html>

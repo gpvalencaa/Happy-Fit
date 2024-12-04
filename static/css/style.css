@@ -3,12 +3,13 @@
 body{
     margin: 0;
     font-family: 'Varela Round', sans-serif;
+    background: linear-gradient(to right, #b2f0e7, #c1d3f9);
 }
 
 .main-cadastro{
     width: 100vw;
     height: 100vh;
-    background: #55c5e7;
+    background: linear-gradient(to right, #b2f0e7, #c1d3f9);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -131,7 +132,7 @@ body{
 .main-login{
     width: 100vw;
     height: 100vh;
-    background: #55c5e7;
+    background: linear-gradient(to right, #b2f0e7, #c1d3f9);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -147,7 +148,7 @@ body{
 }
 
 .left-login > h1{
-    font-size: 2.2vw;
+    font-size: 2.5vw;
     color: #000000;
 }
 
@@ -165,6 +166,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 30px;
 }
 
 .card-login{
@@ -177,12 +179,14 @@ body{
     background: #ffffff;
     border-radius: 20px;
     box-shadow: 0px 10px 40px #000000;
+    font-size: 40px;
 }
 
 .card-login > h1{
     color: #000000;
     font-weight: 800;
     margin: 0;
+    font-size: 30px;
 }
 
 .button-login{
@@ -198,6 +202,7 @@ body{
     color: #000000;
     cursor: pointer;
     box-shadow: 0px 10px 40px -12px #636363;
+    font-size: 30px;
 }
 
 .image-container {
